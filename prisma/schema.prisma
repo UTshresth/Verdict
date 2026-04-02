@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id // Maps exactly to Supabase auth.users(id)
+  name          String?
+  email         String?   @unique
+  image         String?
+  walletBalance Int       @default(1000)
+  totalWins     Int       @default(0)
+  totalLosses   Int       @default(0)
+
+  roomsCreated  Room[]            @relation("RoomCreator")
+  wagers        Wager[]
+  messages      Message[]
+  participations RoomParticipant[]
+  invites       RoomInvite[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Room {
+  id           String    @id @default(uuid())
+  creatorId    String
+  creator      User      @relation("RoomCreator", fields: [creatorId], references: [id])
+  
+  type         RoomType  @default(PUBLIC)
+  topic        String
+  sideAPov     String
+  sideBPov     String
+  judgeMode    JudgeMode @default(ANALYST)
+  status       RoomStatus @default(OPEN)
+  
+  wagerPool        Int       @default(0)
+  deadline         DateTime?
+  bettingDeadline  DateTime?
+  argumentDeadline DateTime?
+  maxBettingCred   Int?
+  adminControls    Boolean   @default(false)
+  participantLimit Int?
+
+  winningSide  Side?
+  verdict      String?
+
+  wagers       Wager[]
+  messages     Message[]
+  participants RoomParticipant[]
+  invites      RoomInvite[]
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([type, status, createdAt])
+  @@index([creatorId])
+}
+
+model Wager {
+  id         String    @id @default(uuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+  roomId     String
+  room       Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  amount     Int
+  sideChosen Side
+  paidOut    Boolean   @default(false)
+
+  createdAt  DateTime  @default(now())
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  sender    String   @default("Anonymous")
+  content   String
+  isSystem  Boolean  @default(false)
+  side      Side?
+  
+  createdAt DateTime @default(now())
+
+  @@index([roomId, createdAt(sort: Desc)])
+}
+
+enum RoomType {
+  PUBLIC
+  PRIVATE
+}
+
+enum JudgeMode {
+  ROASTER
+  MONK
+  ANALYST
+  DEVILS_ADVOCATE
+}
+
+enum RoomStatus {
+  OPEN
+  LIVE
+  COMPLETED
+}
+
+enum Side {
+  A
+  B
+}
+
+model RoomParticipant {
+  id        String   @id @default(uuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  side      Side?
+
+  createdAt DateTime @default(now())
+
+  @@unique([roomId, userId])
+}
+
+model RoomInvite {
+  id        String   @id @default(uuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    InviteStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+
+  @@unique([roomId, userId])
+}
+
+enum InviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}

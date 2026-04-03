@@ -46,7 +46,7 @@ export default function Home() {
       fontFamily: 'var(--font-main)'
     }}>
       {/* Top Nav */}
-      <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '2rem 4rem', alignItems: 'center', position: 'relative', zIndex: 10 }}>
+      <nav className="landing-nav" style={{ display: 'flex', justifyContent: 'space-between', padding: '2rem 4rem', alignItems: 'center', position: 'relative', zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Gavel color="#fff" size={28} />
           <h1 style={{ fontSize: '1.6rem', fontWeight: 800, letterSpacing: '-0.5px' }}>VERDICT</h1>
@@ -54,13 +54,13 @@ export default function Home() {
       </nav>
 
       {/* Main Content Area */}
-      <main className="lp-hero-layout">
+      <main className="hero-layout landing-main">
 
         {/* Left Column: Typography */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: '2rem' }}>
-          <h1 className="lp-hero-heading">
-            Settle Debates. <span className="hidden-mobile">Establish Truth.</span><br/>
-            Unbiased <span style={{ color: '#d2b4f7' }}>AI Judging.</span>
+          <h1 className="hero-heading">
+            Settle Debates. <span className="hidden-mobile">Establish Truth.</span> <br/>
+            Unbiased <span className="ai-highlight" style={{ color: '#d2b4f7' }}>AI Judging.</span>
           </h1>
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -82,7 +82,7 @@ export default function Home() {
             ) : (
               <button
                 onClick={handleLogin}
-                className="lp-google-btn-mobile"
+                className="google-login-btn"
                 style={{
                   background: '#09090b', color: '#fff', padding: '1.2rem 2.8rem', borderRadius: '40px',
                   fontSize: '1.2rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '12px',
@@ -98,29 +98,30 @@ export default function Home() {
         </div>
 
         {/* Right Column: Orbital Graphic */}
-        <div className="lp-hero-orbit" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <div className="lp-glow-circle" style={{ position: 'absolute', width: '650px', height: '650px', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%' }}></div>
-          <div className="lp-glow-circle" style={{ position: 'absolute', width: '450px', height: '450px', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%' }}></div>
-          <div className="lp-glow-circle" style={{ position: 'absolute', width: '250px', height: '250px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%' }}></div>
+        <div className="hero-orbit" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <div className="orbit-circle orbit-large"></div>
+          <div className="orbit-circle orbit-medium"></div>
+          <div className="orbit-circle orbit-small"></div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 20 }}>
-            <Gavel size={64} color="#fff" style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.8))', marginBottom: '8px' }} />
-            <div style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-1px' }}>VERDICT</div>
+          <div className="orbit-center-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 20 }}>
+            <Gavel size={64} color="#fff" className="orbit-hammer-icon" style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.8))' }} />
+            <div className="orbit-wordmark-mobile" style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-1px' }}>VERDICT</div>
+            <div className="orbit-label-mobile" style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '2px', marginTop: '4px' }}>Arbiter Engine</div>
           </div>
 
-          <div className="hidden-mobile" style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>
+          <div className="orbit-icon-mobile" style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>
             <ShieldAlert size={28} color="#ff6384" />
           </div>
-          <div className="hidden-mobile" style={{ position: 'absolute', bottom: '20%', right: '5%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 159, 64, 0.3)' }}>
+          <div className="orbit-icon-mobile" style={{ position: 'absolute', bottom: '20%', right: '5%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 159, 64, 0.3)' }}>
             <Scale size={28} color="#ff9f40" />
           </div>
-          <div className="hidden-mobile" style={{ position: 'absolute', top: '25%', right: '15%', width: '64px', height: '64px', borderRadius: '50%', background: '#8b5cf6', border: '2px solid #fff', boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)', overflow: 'hidden' }}>
+          <div className="orbit-icon-mobile" style={{ position: 'absolute', top: '25%', right: '15%', width: '64px', height: '64px', borderRadius: '50%', background: '#8b5cf6', border: '2px solid #fff', boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=11" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-          <div className="hidden-mobile" style={{ position: 'absolute', bottom: '30%', left: '15%', width: '56px', height: '56px', borderRadius: '50%', background: '#ec4899', border: '2px solid #fff', boxShadow: '0 0 25px rgba(236, 72, 153, 0.5)', overflow: 'hidden' }}>
+          <div className="orbit-icon-mobile" style={{ position: 'absolute', bottom: '30%', left: '15%', width: '56px', height: '56px', borderRadius: '50%', background: '#ec4899', border: '2px solid #fff', boxShadow: '0 0 25px rgba(236, 72, 153, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=44" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-          <div className="hidden-mobile" style={{ position: 'absolute', top: '65%', right: '25%', width: '48px', height: '48px', borderRadius: '50%', background: '#10b981', border: '2px solid #fff', boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)', overflow: 'hidden' }}>
+          <div className="orbit-icon-mobile" style={{ position: 'absolute', top: '65%', right: '25%', width: '48px', height: '48px', borderRadius: '50%', background: '#10b981', border: '2px solid #fff', boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=68" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>

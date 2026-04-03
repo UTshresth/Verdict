@@ -60,7 +60,7 @@ export default function Home() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: '2rem' }}>
           <h1 className="hero-heading">
             <span className="mobile-uppercase">Settle Debates.</span> <br className="hidden-mobile"/>
-            Establish Truth. <br/>
+            <span className="hidden-mobile">Establish Truth. <br/></span>
             Unbiased <span style={{ color: '#d2b4f7' }}>AI Judging.</span>
           </h1>
 
@@ -106,7 +106,6 @@ export default function Home() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 20 }}>
             <Gavel size={64} color="#fff" style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.8))', marginBottom: '8px' }} />
             <div style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-1px' }}>VERDICT</div>
-            <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '2px', marginTop: '4px' }}>Arbiter Engine</div>
           </div>
 
           <div style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>

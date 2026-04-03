@@ -59,7 +59,8 @@ export default function Home() {
         {/* Left Column: Typography */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: '2rem' }}>
           <h1 className="hero-heading">
-            Settle Debates. Establish Truth. <br/>
+            <span className="mobile-uppercase">Settle Debates.</span> <br className="hidden-mobile"/>
+            Establish Truth. <br/>
             Unbiased <span style={{ color: '#d2b4f7' }}>AI Judging.</span>
           </h1>
 

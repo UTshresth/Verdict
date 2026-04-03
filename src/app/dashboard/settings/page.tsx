@@ -42,9 +42,27 @@ export default function SettingsPage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
-        setUsername(user.user_metadata?.full_name || user.email?.split('@')[0] || '');
+        
+        // Fetch persistent profile from Prisma
+        try {
+          const res = await fetch('/api/profile');
+          const data = await res.json();
+          const dbUser = data.user;
+          
+          if (dbUser) {
+            setUsername(dbUser.name || '');
+            setCurrentAvatar(dbUser.image || user.user_metadata?.avatar_url || PRESET_AVATARS[0]);
+          } else {
+            setUsername(user.user_metadata?.full_name || user.email?.split('@')[0] || '');
+            setCurrentAvatar(user.user_metadata?.avatar_url || PRESET_AVATARS[0]);
+          }
+        } catch (e) {
+          console.error("Failed to load DB profile:", e);
+          setUsername(user.user_metadata?.full_name || user.email?.split('@')[0] || '');
+          setCurrentAvatar(user.user_metadata?.avatar_url || PRESET_AVATARS[0]);
+        }
+        
         setGoogleAvatar(user.user_metadata?.avatar_url || '');
-        setCurrentAvatar(user.user_metadata?.avatar_url || PRESET_AVATARS[0]);
       }
     };
     load();

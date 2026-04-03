@@ -21,8 +21,7 @@ export async function GET(request: Request) {
           where: { id: userPrimary.id },
           update: {
             email: userPrimary.email,
-            name: userPrimary.user_metadata?.full_name || 'Anonymous',
-            image: userPrimary.user_metadata?.avatar_url
+            // We only update email here to preserve user-set names and avatars in the database
           },
           create: {
             id: userPrimary.id,

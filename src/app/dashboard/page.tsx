@@ -6,14 +6,13 @@ import Link from 'next/link';
 export default async function Dashboard() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  const userName = user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Debater';
 
-  // Upsert user into DB to ensure they exist
+  // Fetch or initialize user in DB
   let dbUser = null;
   if (user) {
     dbUser = await prisma.user.upsert({
       where: { id: user.id },
-      update: {},
+      update: {}, // We do NOT overwrite here to preserve user customizations 
       create: {
         id: user.id,
         email: user.email,
@@ -22,6 +21,8 @@ export default async function Dashboard() {
       },
     });
   }
+
+  const userName = dbUser?.name?.split(' ')[0] || user?.email?.split('@')[0] || 'Debater';
 
   const balance = dbUser?.walletBalance ?? 1000;
   const wins = dbUser?.totalWins ?? 0;

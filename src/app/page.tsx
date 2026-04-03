@@ -54,13 +54,12 @@ export default function Home() {
       </nav>
 
       {/* Main Content Area */}
-      <main className="hero-layout">
+      <main className="lp-hero-layout">
 
         {/* Left Column: Typography */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: '2rem' }}>
-          <h1 className="hero-heading">
-            <span className="mobile-uppercase">Settle Debates.</span> <br className="hidden-mobile"/>
-            <span className="hidden-mobile">Establish Truth. <br/></span>
+          <h1 className="lp-hero-heading">
+            Settle Debates. <span className="hidden-mobile">Establish Truth.</span><br/>
             Unbiased <span style={{ color: '#d2b4f7' }}>AI Judging.</span>
           </h1>
 
@@ -83,6 +82,7 @@ export default function Home() {
             ) : (
               <button
                 onClick={handleLogin}
+                className="lp-google-btn-mobile"
                 style={{
                   background: '#09090b', color: '#fff', padding: '1.2rem 2.8rem', borderRadius: '40px',
                   fontSize: '1.2rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '12px',
@@ -98,29 +98,29 @@ export default function Home() {
         </div>
 
         {/* Right Column: Orbital Graphic */}
-        <div className="hero-orbit" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <div style={{ position: 'absolute', width: '650px', height: '650px', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%' }}></div>
-          <div style={{ position: 'absolute', width: '450px', height: '450px', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%' }}></div>
-          <div style={{ position: 'absolute', width: '250px', height: '250px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%' }}></div>
+        <div className="lp-hero-orbit" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <div className="lp-glow-circle" style={{ position: 'absolute', width: '650px', height: '650px', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%' }}></div>
+          <div className="lp-glow-circle" style={{ position: 'absolute', width: '450px', height: '450px', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%' }}></div>
+          <div className="lp-glow-circle" style={{ position: 'absolute', width: '250px', height: '250px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%' }}></div>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 20 }}>
             <Gavel size={64} color="#fff" style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.8))', marginBottom: '8px' }} />
             <div style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-1px' }}>VERDICT</div>
           </div>
 
-          <div style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>
+          <div className="hidden-mobile" style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>
             <ShieldAlert size={28} color="#ff6384" />
           </div>
-          <div style={{ position: 'absolute', bottom: '20%', right: '5%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 159, 64, 0.3)' }}>
+          <div className="hidden-mobile" style={{ position: 'absolute', bottom: '20%', right: '5%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 159, 64, 0.3)' }}>
             <Scale size={28} color="#ff9f40" />
           </div>
-          <div style={{ position: 'absolute', top: '25%', right: '15%', width: '64px', height: '64px', borderRadius: '50%', background: '#8b5cf6', border: '2px solid #fff', boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)', overflow: 'hidden' }}>
+          <div className="hidden-mobile" style={{ position: 'absolute', top: '25%', right: '15%', width: '64px', height: '64px', borderRadius: '50%', background: '#8b5cf6', border: '2px solid #fff', boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=11" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-          <div style={{ position: 'absolute', bottom: '30%', left: '15%', width: '56px', height: '56px', borderRadius: '50%', background: '#ec4899', border: '2px solid #fff', boxShadow: '0 0 25px rgba(236, 72, 153, 0.5)', overflow: 'hidden' }}>
+          <div className="hidden-mobile" style={{ position: 'absolute', bottom: '30%', left: '15%', width: '56px', height: '56px', borderRadius: '50%', background: '#ec4899', border: '2px solid #fff', boxShadow: '0 0 25px rgba(236, 72, 153, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=44" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-          <div style={{ position: 'absolute', top: '65%', right: '25%', width: '48px', height: '48px', borderRadius: '50%', background: '#10b981', border: '2px solid #fff', boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)', overflow: 'hidden' }}>
+          <div className="hidden-mobile" style={{ position: 'absolute', top: '65%', right: '25%', width: '48px', height: '48px', borderRadius: '50%', background: '#10b981', border: '2px solid #fff', boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)', overflow: 'hidden' }}>
             <img src="https://i.pravatar.cc/150?img=68" alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>

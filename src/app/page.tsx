@@ -107,7 +107,6 @@ export default function Home() {
           <div className="orbit-center-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 20 }}>
             <Gavel size={64} color="#fff" className="orbit-hammer-icon" style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.8))' }} />
             <div className="orbit-wordmark-mobile" style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-1px' }}>VERDICT</div>
-            <div className="orbit-label-mobile" style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '2px', marginTop: '4px' }}>Arbiter Engine</div>
           </div>
 
           <div className="orbit-icon-mobile" style={{ position: 'absolute', top: '15%', left: '8%', background: '#09090b', padding: '16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 0 20px rgba(255, 99, 132, 0.3)' }}>

@@ -3,7 +3,7 @@
 // Key 2 & 3 (MODERATORS): Load-balanced message moderation
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL = 'llama-3.3-70b-versatile';
+const MODEL = 'openai/gpt-oss-20b';
 
 // Round-robin counter for load balancing moderator keys
 let modKeyIndex = 0;
